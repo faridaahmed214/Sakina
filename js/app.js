@@ -18,9 +18,16 @@ function switchPage(pageId) {
 
 function toggleTheme() {
   const htmlEl = document.documentElement;
-  const currentTheme = htmlEl.getAttribute("data-theme");
+
+  let currentTheme = htmlEl.getAttribute("data-theme");
+  if (!currentTheme) {
+    currentTheme = localStorage.getItem("sakina_theme") || "light";
+  }
+
   const newTheme = currentTheme === "light" ? "dark" : "light";
+
   htmlEl.setAttribute("data-theme", newTheme);
+  localStorage.setItem("sakina_theme", newTheme);
 
   const btn = document.querySelector(".theme-toggle");
 
@@ -32,6 +39,9 @@ function toggleTheme() {
     lucide.createIcons();
   }
 }
+// =========================================
+// 📖 الأذكار (مع الحفظ التلقائي)
+// =========================================
 
 function filterAzkar(category) {
   const tabs = document.querySelectorAll(".tab-btn");
@@ -52,23 +62,31 @@ function filterAzkar(category) {
   }
 
   filteredAzkar.forEach((zekr, index) => {
+    const uniqueKey = `sakina_${category}_${index}`;
+
+    const savedCount = localStorage.getItem(uniqueKey) || 0;
+
     const div = document.createElement("div");
-    div.className = "zekr-card";
+    div.className = `zekr-card ${savedCount >= zekr.count ? "completed" : ""}`;
+
     div.setAttribute("data-target", zekr.count);
-    div.setAttribute("data-current", 0);
+    div.setAttribute("data-current", savedCount);
+    div.setAttribute("data-key", uniqueKey);
     div.setAttribute("onclick", "incrementCard(this)");
+
+    const percentage = (savedCount / zekr.count) * 100;
+    const badgeText =
+      savedCount >= zekr.count ? "✔" : `${savedCount} / ${zekr.count}`;
 
     div.innerHTML = `
             <div class="zekr-header">
-                <span class="counter-badge" id="badge-${index}">0 / ${
-      zekr.count
-    }</span>
+                <span class="counter-badge">${badgeText}</span>
                 <small style="color:var(--text-sub)">${
                   zekr.description ? zekr.description : ""
                 }</small>
             </div>
             <div class="zekr-text">${zekr.text}</div>
-            <div class="progress-fill" id="progress-${index}"></div>
+            <div class="progress-fill" style="width:${percentage}%"></div>
         `;
     container.appendChild(div);
   });
@@ -77,17 +95,19 @@ function filterAzkar(category) {
 function incrementCard(cardElement) {
   let current = parseInt(cardElement.getAttribute("data-current"));
   const target = parseInt(cardElement.getAttribute("data-target"));
+  const key = cardElement.getAttribute("data-key");
 
   if (current >= target) return;
 
   current++;
   cardElement.setAttribute("data-current", current);
 
+  localStorage.setItem(key, current);
+
   const badge = cardElement.querySelector(".counter-badge");
   const progressBar = cardElement.querySelector(".progress-fill");
 
   badge.innerText = `${current} / ${target}`;
-
   const percentage = (current / target) * 100;
   progressBar.style.width = `${percentage}%`;
 
@@ -100,10 +120,20 @@ function incrementCard(cardElement) {
   }
 }
 
+// =========================================
+// 📿 سلم التسابيح
+// =========================================
+
 let currentStepIndex = 0;
 let currentCount = 0;
 
 function initLadder() {
+  const savedIndex = localStorage.getItem("sakina_ladder_index");
+  const savedCount = localStorage.getItem("sakina_ladder_count");
+
+  if (savedIndex !== null) currentStepIndex = parseInt(savedIndex);
+  if (savedCount !== null) currentCount = parseInt(savedCount);
+
   const ladderContainer = document.getElementById("ladder-steps");
   if (!ladderContainer) return;
 
@@ -126,6 +156,14 @@ function initLadder() {
         `;
     ladderContainer.appendChild(stepDiv);
   });
+
+  if (currentStepIndex > 0 && currentStepIndex < tasabeehLadder.length) {
+    setTimeout(() => {
+      const activeStep = document.getElementById(`step-${currentStepIndex}`);
+      if (activeStep)
+        activeStep.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 100);
+  }
 
   updateActiveCard();
 }
@@ -158,6 +196,9 @@ function handleLadderClick() {
   if (currentCount < target) {
     currentCount++;
     document.getElementById("ladder-count").innerText = currentCount;
+
+    localStorage.setItem("sakina_ladder_count", currentCount);
+
     if (navigator.vibrate) navigator.vibrate(5);
   }
 
@@ -179,6 +220,9 @@ function completeStep() {
   currentStepIndex++;
   currentCount = 0;
 
+  localStorage.setItem("sakina_ladder_index", currentStepIndex);
+  localStorage.setItem("sakina_ladder_count", 0);
+
   updateActiveCard();
 
   if (currentStepIndex < tasabeehLadder.length) {
@@ -194,10 +238,16 @@ function resetLadder() {
   if (confirm("هل تريد بدء السلم من جديد؟")) {
     currentStepIndex = 0;
     currentCount = 0;
+    // مسح الحفظ
+    localStorage.setItem("sakina_ladder_index", 0);
+    localStorage.setItem("sakina_ladder_count", 0);
     initLadder();
   }
 }
 
+// =========================================
+// ❤️ المشاعر
+// =========================================
 function renderMoods() {
   const grid = document.getElementById("moods-grid");
   if (!grid) return;
@@ -210,7 +260,6 @@ function renderMoods() {
   };
 
   grid.innerHTML = "";
-
   Object.keys(moodData).forEach((key) => {
     const btn = document.createElement("button");
     btn.className = "card";
@@ -223,11 +272,9 @@ function renderMoods() {
             </div>
             <span>${labelText}</span>
         `;
-
     btn.onclick = () => showMoodResult(key);
     grid.appendChild(btn);
   });
-
   lucide.createIcons();
 }
 
@@ -237,14 +284,28 @@ function showMoodResult(moodKey) {
     const randomDua = list[Math.floor(Math.random() * list.length)];
     const resultDiv = document.getElementById("mood-result");
     const textP = document.getElementById("mood-text");
-
     textP.innerText = `"${randomDua}"`;
     resultDiv.style.display = "block";
     resultDiv.scrollIntoView({ behavior: "smooth" });
   }
 }
 
+// =========================================
+// 🚀 التحميل الأولي
+// =========================================
 window.onload = function () {
+  const savedTheme = localStorage.getItem("sakina_theme") || "light";
+  document.documentElement.setAttribute("data-theme", savedTheme);
+
+  const btn = document.querySelector(".theme-toggle");
+
+  if (btn) {
+    const iconName = savedTheme === "light" ? "moon" : "sun";
+    btn.innerHTML = `<i data-lucide="${iconName}"></i>`;
+
+    lucide.createIcons();
+  }
+
   filterAzkar("sabah");
   renderMoods();
 };
