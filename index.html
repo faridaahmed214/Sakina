@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sakina | سكينة</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+      .tabs-container {
+        width: 100%;
+        overflow: hidden;
+        margin-bottom: 20px;
+      }
+      .tabs-scroll {
+        display: flex;
+        gap: 10px;
+        overflow-x: auto;
+        padding-bottom: 10px;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+      }
+      .tabs-scroll::-webkit-scrollbar {
+        height: 0px;
+        background: transparent;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="app-header">
+      <div class="brand">
+        <img src="assets/logo.png" alt="logo" class="logo-img" />
+        <!-- <h1 style="font-size: 1.2rem; color: var(--primary)">سكينة</h1> -->
+      </div>
+      <button class="theme-toggle" onclick="toggleTheme()">
+        <i data-lucide="moon"></i>
+      </button>
+    </header>
+
+    <main class="app-content">
+      <div id="page-home" class="page-section active">
+        <div class="home-centered">
+          <div class="spiritual-container">
+            <div class="hanging-lamp">
+              <div class="lamp-wire"></div>
+              <div class="lamp-icon"></div>
+              <div class="lamp-glow"></div>
+            </div>
+            <div class="dua-content-minimal">
+              <h3 class="dua-title">صدقة جارية</h3>
+              <p class="dua-text-art">
+                "اللهم اجعل هذا العمل خالصاً لوجهك الكريم، وتقبله مني صدقةً
+                جارية، واغفر لي ولوالديّ وللمسلمين، واجعل لكل من قرأ حرفاً منه
+                نصيباً من الأجر والسكينة."
+              </p>
+              <div class="signature">
+                <span>نسألكم الدعاء</span>
+                <i
+                  data-lucide="heart"
+                  style="width: 14px; color: var(--accent)"
+                ></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="page-azkar" class="page-section">
+        <div class="section-title">الأذكار</div>
+        <div class="tabs-container">
+          <div class="tabs-scroll">
+            <button class="tab-btn active" onclick="filterAzkar('sabah')">
+              الصباح
+            </button>
+            <button class="tab-btn" onclick="filterAzkar('masaa')">
+              المساء
+            </button>
+            <button class="tab-btn" onclick="filterAzkar('sleep')">
+              النوم
+            </button>
+            <button class="tab-btn" onclick="filterAzkar('wake')">
+              الاستيقاظ
+            </button>
+            <button class="tab-btn" onclick="filterAzkar('salah')">
+              الصلاة
+            </button>
+            <button class="tab-btn" onclick="filterAzkar('jawami')">
+              جوامع الدعاء
+            </button>
+          </div>
+        </div>
+        <div id="azkar-list" class="azkar-container"></div>
+      </div>
+
+      <div id="page-masbaha" class="page-section">
+        <div class="masbaha-container">
+          <div class="active-task-card">
+            <h3 id="ladder-title">سُبْحَانَ اللَّهِ</h3>
+            <p id="ladder-desc">يكتب له ألف حسنة...</p>
+            <div class="masbaha-circle-small" onclick="handleLadderClick()">
+              <span id="ladder-count">0</span>
+              <small id="ladder-target">/ 100</small>
+            </div>
+            <p class="click-hint">اضغطي للعد</p>
+          </div>
+          <div class="ladder-container">
+            <div class="ladder-header">
+              <span>رحلة اليوم</span>
+              <button class="reset-link" onclick="resetLadder()">
+                بدء من جديد
+              </button>
+            </div>
+            <div id="ladder-steps" class="steps-wrapper"></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="page-moods" class="page-section">
+        <div class="section-title">بم تشعر الآن؟</div>
+        <div class="grid-2" id="moods-grid"></div>
+        <div
+          id="mood-result"
+          class="card"
+          style="display: none; margin-top: 20px"
+        >
+          <p id="mood-text" style="line-height: 1.8; font-size: 1.1rem"></p>
+        </div>
+      </div>
+    </main>
+
+    <nav class="bottom-nav">
+      <button
+        class="nav-item active"
+        onclick="switchPage('home')"
+        id="nav-home"
+      >
+        <i data-lucide="home"></i>
+        <span>الرئيسية</span>
+      </button>
+      <button class="nav-item" onclick="switchPage('azkar')" id="nav-azkar">
+        <i data-lucide="book-open"></i>
+        <span>الأذكار</span>
+      </button>
+      <button class="nav-item" onclick="switchPage('masbaha')" id="nav-masbaha">
+        <i data-lucide="circle-dashed"></i>
+        <span>المسبحة</span>
+      </button>
+      <button class="nav-item" onclick="switchPage('moods')" id="nav-moods">
+        <i data-lucide="heart"></i>
+        <span>شعورك</span>
+      </button>
+    </nav>
+
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
