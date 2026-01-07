@@ -22,9 +22,13 @@ function toggleTheme() {
   const newTheme = currentTheme === "light" ? "dark" : "light";
   htmlEl.setAttribute("data-theme", newTheme);
 
-  const btnIcon = document.querySelector(".theme-toggle i");
-  if (btnIcon) {
-    btnIcon.setAttribute("data-lucide", newTheme === "light" ? "moon" : "sun");
+  const btn = document.querySelector(".theme-toggle");
+
+  if (btn) {
+    const iconName = newTheme === "light" ? "moon" : "sun";
+
+    btn.innerHTML = `<i data-lucide="${iconName}"></i>`;
+
     lucide.createIcons();
   }
 }

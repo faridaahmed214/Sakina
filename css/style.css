@@ -461,6 +461,7 @@ button {
   font-size: 1.1rem;
   cursor: pointer;
   transition: transform 0.2s, border-color 0.2s;
+  color: var(--text-main);
 }
 #moods-grid .card:hover {
   transform: translateY(-3px);
