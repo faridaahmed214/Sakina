@@ -43,7 +43,10 @@ function toggleTheme() {
 // 📖 الأذكار (مع الحفظ التلقائي)
 // =========================================
 
+let currentAzkarCategory = "sabah";
+
 function filterAzkar(category) {
+  currentAzkarCategory = category;
   const tabs = document.querySelectorAll(".tab-btn");
   tabs.forEach((btn) => {
     btn.classList.remove("active");
@@ -120,6 +123,23 @@ function incrementCard(cardElement) {
   }
 }
 
+function resetAzkar() {
+  if (!currentAzkarCategory) return;
+
+  if (confirm("هل تريد تصفير العدادات لهذه الفئة؟")) {
+    const list = azkarData.filter(
+      (item) => item.category === currentAzkarCategory,
+    );
+
+    list.forEach((item, index) => {
+      const key = `sakina_${currentAzkarCategory}_${index}`;
+      localStorage.setItem(key, 0);
+    });
+
+    filterAzkar(currentAzkarCategory);
+  }
+}
+
 // =========================================
 // 📿 سلم التسابيح
 // =========================================
@@ -183,9 +203,8 @@ function updateActiveCard() {
   document.getElementById("ladder-title").innerText = currentTask.text;
   document.getElementById("ladder-desc").innerText = currentTask.desc;
   document.getElementById("ladder-count").innerText = currentCount;
-  document.getElementById(
-    "ladder-target"
-  ).innerText = `/ ${currentTask.target}`;
+  document.getElementById("ladder-target").innerText =
+    `/ ${currentTask.target}`;
 }
 
 function handleLadderClick() {
@@ -289,7 +308,6 @@ function showMoodResult(moodKey) {
     resultDiv.scrollIntoView({ behavior: "smooth" });
   }
 }
-
 
 window.onload = function () {
   const savedTheme = localStorage.getItem("sakina_theme") || "light";

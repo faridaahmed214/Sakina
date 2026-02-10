@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
   <head>
     <meta charset="UTF-8" />
@@ -37,12 +37,12 @@
         color: var(--primary, #38b2ac);
         padding: 6px 14px;
         border-radius: 20px;
-        font-family: 'Tajawal', sans-serif;
-        font-size: 0.8rem; 
+        font-family: "Tajawal", sans-serif;
+        font-size: 0.8rem;
         display: flex;
         align-items: center;
         gap: 6px;
-        margin: 15px auto 0; 
+        margin: 15px auto 0;
         cursor: pointer;
         transition: all 0.2s;
         opacity: 0.8;
@@ -74,7 +74,7 @@
               <div class="lamp-icon"></div>
               <div class="lamp-glow"></div>
             </div>
-            
+
             <div class="dua-content-minimal">
               <h3 class="dua-title">صدقة جارية</h3>
               <p class="dua-text-art">
@@ -82,7 +82,7 @@
                 جارية، واغفر لي ولوالديّ وللمسلمين، واجعل لكل من قرأ حرفاً منه
                 نصيباً من الأجر والسكينة."
               </p>
-              
+
               <div class="signature">
                 <span>نسألكم الدعاء</span>
                 <i
@@ -91,10 +91,9 @@
                 ></i>
               </div>
 
-              <button id="installBtn" class="mini-install-btn" >
+              <button id="installBtn" class="mini-install-btn">
                 <i data-lucide="download" width="14"></i>
               </button>
-
             </div>
           </div>
         </div>
@@ -123,6 +122,17 @@
               جوامع الدعاء
             </button>
           </div>
+        </div>
+
+        <div
+          style="
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 10px;
+            padding: 0 5px;
+          "
+        >
+          <button class="reset-link" onclick="resetAzkar()">إعادة تعيين</button>
         </div>
         <div id="azkar-list" class="azkar-container"></div>
       </div>
@@ -189,7 +199,7 @@
     <script src="js/data.js"></script>
     <script src="js/app.js"></script>
     <script src="js/pwa.js"></script>
-    
+
     <script>
       lucide.createIcons();
     </script>
