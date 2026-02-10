@@ -358,6 +358,8 @@ button {
   user-select: none;
   transition: transform 0.1s;
   box-shadow: 0 10px 20px rgba(49, 151, 149, 0.2);
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
 }
 .masbaha-circle-small:active {
   transform: scale(0.95);
