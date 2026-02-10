@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>لا يوجد اتصال | سكينة</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style2.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body>
+    <div class="container error-page">
+      <div class="hanging-lamp">
+        <div class="lamp-wire"></div>
+        <div
+          class="lamp-icon"
+          style="display: flex; justify-content: center; align-items: center"
+        >
+          <i
+            data-lucide="wifi-off"
+            style="width: 20px; color: var(--primary)"
+          ></i>
+        </div>
+        <div class="lamp-glow"></div>
+      </div>
+
+      <h1>لا يوجد إنترنت</h1>
+      <p>
+        أنت الآن في وضع "عدم الاتصال".<br />
+        لا تقلق، يمكنك تصفح الأذكار المحفوظة مسبقاً.
+      </p>
+
+      <a href="/" class="btn"> العودة للأذكار </a>
+    </div>
+
+    <script>
+      lucide.createIcons();
+    </script>
+  </body>
+</html>

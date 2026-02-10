@@ -1,0 +1,55 @@
+.error-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100%;
+  padding: 40px 20px;
+  background-color: var(--bg-main);
+}
+
+.error-page h1 {
+  font-size: 1.8rem;
+  color: var(--primary);
+  margin-bottom: 10px;
+  font-weight: 800;
+}
+
+.error-page p {
+  color: var(--text-sub);
+  margin-bottom: 35px;
+  line-height: 1.6;
+  max-width: 320px;
+  font-size: 1rem;
+}
+
+.btn {
+  display: inline-block;
+  background-color: var(--primary);
+  color: var(--primary);
+  text-decoration: none; 
+  padding: 12px 40px;
+  border-radius: 50px; 
+  font-weight: bold;
+  font-size: 1rem;
+  box-shadow: 0 4px 15px rgba(49, 151, 149, 0.3); 
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+
+.btn:hover {
+  transform: translateY(-3px); 
+  box-shadow: 0 6px 20px rgba(49, 151, 149, 0.5);
+  background-color: var(--primary-light);
+  border: 2px solid var(--primary);
+}
+
+.btn:active {
+  transform: scale(0.98); 
+}
+
+.error-page .hanging-lamp {
+  margin-bottom: 40px; 
+}

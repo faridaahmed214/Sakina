@@ -1,0 +1,21 @@
+{
+  "name": "سكينة - أذكار وأدعية",
+  "short_name": "سكينة",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#38b2ac",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "assets/icon192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/icon512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

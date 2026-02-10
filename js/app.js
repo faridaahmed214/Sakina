@@ -290,9 +290,7 @@ function showMoodResult(moodKey) {
   }
 }
 
-// =========================================
-// 🚀 التحميل الأولي
-// =========================================
+
 window.onload = function () {
   const savedTheme = localStorage.getItem("sakina_theme") || "light";
   document.documentElement.setAttribute("data-theme", savedTheme);

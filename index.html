@@ -9,6 +9,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="manifest" href="manifest.json" />
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
       .tabs-container {
@@ -29,13 +30,35 @@
         height: 0px;
         background: transparent;
       }
+
+      .mini-install-btn {
+        background: transparent;
+        border: 1px solid rgba(56, 178, 172, 0.4);
+        color: var(--primary, #38b2ac);
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-family: 'Tajawal', sans-serif;
+        font-size: 0.8rem; 
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin: 15px auto 0; 
+        cursor: pointer;
+        transition: all 0.2s;
+        opacity: 0.8;
+      }
+
+      .mini-install-btn:hover {
+        background: rgba(56, 178, 172, 0.1);
+        opacity: 1;
+        transform: translateY(-2px);
+      }
     </style>
   </head>
   <body>
     <header class="app-header">
       <div class="brand">
         <img src="assets/logo.png" alt="logo" class="logo-img" />
-        <!-- <h1 style="font-size: 1.2rem; color: var(--primary)">سكينة</h1> -->
       </div>
       <button class="theme-toggle" onclick="toggleTheme()">
         <i data-lucide="moon"></i>
@@ -51,6 +74,7 @@
               <div class="lamp-icon"></div>
               <div class="lamp-glow"></div>
             </div>
+            
             <div class="dua-content-minimal">
               <h3 class="dua-title">صدقة جارية</h3>
               <p class="dua-text-art">
@@ -58,6 +82,7 @@
                 جارية، واغفر لي ولوالديّ وللمسلمين، واجعل لكل من قرأ حرفاً منه
                 نصيباً من الأجر والسكينة."
               </p>
+              
               <div class="signature">
                 <span>نسألكم الدعاء</span>
                 <i
@@ -65,6 +90,11 @@
                   style="width: 14px; color: var(--accent)"
                 ></i>
               </div>
+
+              <button id="installBtn" class="mini-install-btn" >
+                <i data-lucide="download" width="14"></i>
+              </button>
+
             </div>
           </div>
         </div>
@@ -158,5 +188,10 @@
 
     <script src="js/data.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/pwa.js"></script>
+    
+    <script>
+      lucide.createIcons();
+    </script>
   </body>
 </html>
