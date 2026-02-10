@@ -29,7 +29,9 @@
   margin: 0;
   padding: 0;
   font-family: "Tajawal", sans-serif;
-  transition: background 0.3s, color 0.3s;
+  transition:
+    background 0.3s,
+    color 0.3s;
 }
 body {
   background-color: var(--bg-main);
@@ -263,7 +265,9 @@ button {
   box-shadow: var(--shadow);
   cursor: pointer;
   overflow: hidden;
-  transition: transform 0.1s, border-color 0.3s;
+  transition:
+    transform 0.1s,
+    border-color 0.3s;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
 }
@@ -460,7 +464,9 @@ button {
   text-align: center;
   font-size: 1.1rem;
   cursor: pointer;
-  transition: transform 0.2s, border-color 0.2s;
+  transition:
+    transform 0.2s,
+    border-color 0.2s;
   color: var(--text-main);
 }
 #moods-grid .card:hover {

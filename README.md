@@ -10,7 +10,7 @@
   <img src="https://img.shields.io/badge/Minimalist-d69e2e?style=for-the-badge&logo=sparkles&logoColor=white" height="30">
   <img src="https://img.shields.io/badge/v1.0.0-2d3748?style=for-the-badge" height="30">
 
-  <br><br>
+<br><br>
 
   <p align="center" style="font-size: 1.1rem;">
     <b>Sakina</b> is a modern, minimalist web application designed to bring tranquility to your daily routine. <br>
@@ -23,35 +23,38 @@
 
 ---
 
-## ⚡ Key Features
+## Key Features
 
 ### Core Experience
-* **🌀 Spiritual Animation:** Features a floating, glowing lamp animation (`CSS3`) that creates a breathing effect for focus.
-* **🎨 Calm Palette:** Designed with **Teal (#319795)** for serenity and **Gold (#D69E2E)** for warmth.
+
+- ** Spiritual Animation:** Features a floating, glowing lamp animation (`CSS3`) that creates a breathing effect for focus.
+- ** Calm Palette:** Designed with **Teal (#319795)** for serenity and **Gold (#D69E2E)** for warmth.
 
 ### Interactive Elements
-* **👆 Tap-to-Count:** Cards are not just text; they are interactive counters with filling progress bars.
-* **🪜 Gamified Ladder:** A 16-step Tasbeeh journey that unlocks progressively.
-* **❤️ Mood Selector:** Dynamic Dua generation based on current emotional state.
+
+- ** Tap-to-Count:** Cards are not just text; they are interactive counters with filling progress bars.
+- ** Gamified Ladder:** A 16-step Tasbeeh journey that unlocks progressively.
+- ** Mood Selector:** Dynamic Dua generation based on current emotional state.
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 <div align="center">
   <img src="https://skillicons.dev/icons?i=html,css,js,github&theme=light" />
 </div>
 
-* **Structure:** Semantic HTML5
-* **Styling:** Custom CSS3 (Animations, Variables, Flexbox/Grid)
-* **Logic:** Vanilla JavaScript (Local State, DOM Manipulation)
-* **Assets:** Lucide Icons
+- **Structure:** Semantic HTML5
+- **Styling:** Custom CSS3 (Animations, Variables, Flexbox/Grid)
+- **Logic:** Vanilla JavaScript (Local State, DOM Manipulation)
+- **Assets:** Lucide Icons
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 1.  **Clone the repository**
+
     ```bash
     git clone [https://github.com/faridaahmed214/Sakina.git](https://github.com/faridaahmed214/Sakina.git)
     ```
@@ -61,6 +64,22 @@
 
 ---
 
+## Installing the App (PWA)
+
+Sakina is a Progressive Web App (PWA). You can install it on your device for an app-like experience:
+
+**On Desktop (Chrome/Edge):**
+
+1.  Click the install icon in the address bar (right side).
+2.  Or click the "Download" icon that appears in the app header (if available).
+
+**On Mobile (Android/iOS):**
+
+1.  Open the site in Chrome (Android) or Safari (iOS).
+2.  Tap "Add to Home Screen" from the browser menu.
+3.  Enjoy offline access!
+
+---
 
 ---
 
