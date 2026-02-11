@@ -9,6 +9,7 @@ const files = [
   "./assets/logo.png",
   "./assets/icon192.png",
   "./assets/icon512.png",
+  "./assets/notification-sound.mp3",
   "./offline.html",
   "./404.html",
 ];
@@ -32,6 +33,9 @@ self.addEventListener("activate", (event) => {
 });
 
 self.addEventListener("fetch", (event) => {
+  if (event.request.method !== "GET" || !event.request.url.startsWith("http"))
+    return;
+
   event.respondWith(
     (async () => {
       try {
@@ -41,26 +45,27 @@ self.addEventListener("fetch", (event) => {
           return caches.match("./404.html");
         }
 
-        const responseClone = response.clone();
-        const cache = await caches.open(CACHE_NAME);
-        await cache.put(event.request, responseClone);
+        if (response.status === 200) {
+          const cache = await caches.open(CACHE_NAME);
+          cache.put(event.request, response.clone());
+        }
 
         return response;
       } catch (error) {
         const cachedResponse = await caches.match(event.request);
-        if (cachedResponse) {
-          return cachedResponse;
-        }
+        if (cachedResponse) return cachedResponse;
 
         if (event.request.headers.get("accept").includes("text/html")) {
           return caches.match("./offline.html");
         }
 
-        return new Response("Offline", {
-          status: 404,
-          statusText: "Not Found",
-        });
+        return new Response("Offline", { status: 404 });
       }
     })(),
   );
+});
+
+self.addEventListener("notificationclick", (event) => {
+  event.notification.close();
+  event.waitUntil(clients.openWindow("/"));
 });
