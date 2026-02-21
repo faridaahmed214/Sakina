@@ -56,6 +56,7 @@ function filterAzkar(category) {
 
   const filteredAzkar = azkarData.filter((item) => item.category === category);
   const container = document.getElementById("azkar-list");
+  if (!container) return;
   container.innerHTML = "";
 
   if (filteredAzkar.length === 0) {
@@ -70,7 +71,7 @@ function filterAzkar(category) {
     const savedCount = localStorage.getItem(uniqueKey) || 0;
 
     const div = document.createElement("div");
-    div.className = `zekr-card ${savedCount >= zekr.count ? "completed" : ""} ${zekr.count === 100 ? "count-100" : ""}`;
+    div.className = `zekr-card ${savedCount >= zekr.count ? "completed" : ""}`;
 
     div.setAttribute("data-target", zekr.count);
     div.setAttribute("data-current", savedCount);
@@ -309,7 +310,7 @@ function showMoodResult(moodKey) {
   }
 }
 
-window.onload = function () {
+document.addEventListener("DOMContentLoaded", function () {
   const savedTheme = localStorage.getItem("sakina_theme") || "light";
   document.documentElement.setAttribute("data-theme", savedTheme);
 
@@ -324,4 +325,4 @@ window.onload = function () {
 
   filterAzkar("sabah");
   renderMoods();
-};
+});
