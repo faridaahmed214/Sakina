@@ -70,7 +70,7 @@ function filterAzkar(category) {
     const savedCount = localStorage.getItem(uniqueKey) || 0;
 
     const div = document.createElement("div");
-    div.className = `zekr-card ${savedCount >= zekr.count ? "completed" : ""}`;
+    div.className = `zekr-card ${savedCount >= zekr.count ? "completed" : ""} ${zekr.count === 100 ? "count-100" : ""}`;
 
     div.setAttribute("data-target", zekr.count);
     div.setAttribute("data-current", savedCount);

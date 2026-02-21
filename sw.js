@@ -9,7 +9,6 @@ const files = [
   "./assets/logo.png",
   "./assets/icon192.png",
   "./assets/icon512.png",
-  "./assets/notification-sound.mp3",
   "./offline.html",
   "./404.html",
 ];
@@ -63,9 +62,4 @@ self.addEventListener("fetch", (event) => {
       }
     })(),
   );
-});
-
-self.addEventListener("notificationclick", (event) => {
-  event.notification.close();
-  event.waitUntil(clients.openWindow("/"));
 });

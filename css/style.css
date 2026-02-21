@@ -83,6 +83,11 @@ button {
   overflow-y: auto;
   padding: 20px;
   padding-bottom: 80px;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+.app-content::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
 }
 .page-section {
   display: none;
@@ -230,9 +235,10 @@ button {
 }
 .tabs-scroll {
   display: flex;
+  align-items: center;
   gap: 8px;
   overflow-x: auto;
-  padding-bottom: 0;
+  padding: 0;
   white-space: nowrap;
   scrollbar-width: none;
 }
@@ -499,4 +505,51 @@ button {
 }
 .nav-item.active {
   color: var(--primary);
+}
+@media (max-width: 779px) {
+  .zekr-card.count-100 .zekr-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+
+/* تحسينات الشاشات الصغيرة لتجنب الحاجة للتصغير */
+@media (max-width: 480px) {
+  .logo-img {
+    width: 85px;
+    height: 85px;
+  }
+  .hanging-lamp {
+    margin-bottom: 15px;
+  }
+  .lamp-wire {
+    height: 30px;
+  }
+  .dua-text-art {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  .home-centered {
+    min-height: 60vh;
+  }
+  .app-content {
+    padding: 15px;
+    padding-bottom: 80px;
+  }
+}
+
+/* للأجهزة القصيرة جداً */
+@media (max-height: 650px) {
+  .hanging-lamp {
+    transform: scale(0.7);
+    margin-bottom: 5px;
+  }
+  .lamp-wire {
+    height: 15px;
+  }
+  .home-centered {
+    min-height: 50vh;
+  }
 }
